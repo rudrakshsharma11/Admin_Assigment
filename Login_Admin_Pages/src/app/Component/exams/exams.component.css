@@ -1,0 +1,12 @@
+::ng-deep .mat-tab-label {
+    padding: 10px !important;
+    justify-content: left !important;
+
+  }
+  .select-arrow {
+    position: absolute;
+    right: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }

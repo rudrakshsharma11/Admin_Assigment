@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(175, 173, 173);">
+    <div>
+        <app-navabr></app-navabr>
+    </div>
+    <div class="main-con">
+        <div style="width: 95%;height: 130px ;background-color:  rgb(215, 215, 250);
+            position: relative;top: 20px;border-radius: 5px;display: flex;justify-content: space-evenly; left: 36px;">
+            <input type="text" placeholder="Filter" style="width: 213px;height: 43px;position: absolute;left: 20px;top: 25px;
+            border: 1px solid black; border-radius: 8px;padding: 13px;font-size: 15px;font-family: sans-serif;">
+            <button
+                style="position: absolute;right: 20px;top: 26px;padding: 6px;margin-top: 3px;width: 140px;height: 43px;border-radius: 10px;"
+                (click)="addBatch()">Add Batch</button>
+        </div>
+        <div class="batch-container">
+            <div *ngFor="let batch of batches; let i = index" class="batch-entry">
+                <div style="display: flex;justify-content: space-around;">
+                    <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Action</span>
+                    <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Batch Code</span>
+                    <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Batch Name</span>
+                    <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Batch Start Date</span>
+
+                </div>
+                <div style="position: relative;margin-left: 65px;">
+                    <mat-icon class="mat-icon-main" svgIcon="Dwn-up" aria-hidden="false"
+                        aria-label="Toggle Password Visibility" style="margin-right: 15px;"></mat-icon>
+                    <mat-icon class="mat-icon-main" svgIcon="Edit-up" (click)="editBatch(i)" aria-hidden="false"
+                        aria-label="Toggle Password Visibility" style="margin-right: 15px;"></mat-icon>
+                    <mat-icon class="mat-icon-main" svgIcon="Del-up" (click)="deleteBatch(i)" aria-hidden="false"
+                        aria-label="Toggle Password Visibility" style="margin-right: 15px;"></mat-icon>
+                    <mat-icon class="mat-icon-main" svgIcon="Add-up" (click)="addNestedBatch(i)" aria-hidden="false"
+                        aria-label="Toggle Password Visibility" style="margin-right: 15px;"></mat-icon>
+
+
+
+
+                    <input type="text" style="position: relative;left: 105px;width: 177px;height: 35px;border-radius: 5px;
+                    border: 1px solid black;text-align: center;" [(ngModel)]="batch.name" placeholder="Batch Code" />
+                    {{batch.name}}
+                    <input type="text" style="position: relative;left: 225px;width: 177px;height: 35px;border-radius: 5px;
+                    border: 1px solid black;text-align: center;" [(ngModel)]="batch.startDate"
+                        placeholder="Batch Name" />
+                    <input type="date" style="position: relative;left: 355px;width: 177px;height: 35px;border-radius: 5px;
+                    border: 1px solid black;text-align: center;" [(ngModel)]="batch.endDate" />
+                </div>
+
+
+                <div *ngFor="let nestedBatch of batch.nestedBatches; let j = index" class="nested-batch">
+
+                    <div style="display: flex;justify-content: space-around;">
+                        <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Action</span>
+                        <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Code</span>
+                        <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Program Name</span>
+                        <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Students</span>
+
+                    </div>
+
+                    <div style="position: relative;margin-left: 65px;">
+                        <mat-icon class="mat-icon-main" svgIcon="Dwn-up" aria-hidden="false"
+                            aria-label="Toggle Password Visibility" style="margin-right: 15px;"></mat-icon>
+                        <mat-icon class="mat-icon-main" svgIcon="Edit-up" (click)="editNestedBatch(i, j)"
+                            aria-hidden="false" aria-label="Toggle Password Visibility"
+                            style="margin-right: 15px;"></mat-icon>
+                        <mat-icon class="mat-icon-main" svgIcon="Del-up" (click)="deleteNestedBatch(i, j)"
+                            aria-hidden="false" aria-label="Toggle Password Visibility"
+                            style="margin-right: 15px;"></mat-icon>
+                        <mat-icon class="mat-icon-main" svgIcon="Add-up" (click)="addNestedBatch2(i, j)"
+                            aria-hidden="false" aria-label="Toggle Password Visibility"
+                            style="margin-right: 15px;"></mat-icon>
+
+
+                        <input type="text" style="position: relative;left: 88px;width: 177px;height: 35px;border-radius: 5px;
+                        border: 1px solid black;text-align: center;" [(ngModel)]="nestedBatch.name"
+                            placeholder="Code" />
+                        <input type="text" style="position: relative;left: 192px;width: 177px;height: 35px;border-radius: 5px;
+                        border: 1px solid black;text-align: center;" [(ngModel)]="nestedBatch.startDate"
+                            placeholder="Program Name" />
+                        <input type="text" style="position: relative;left: 313px;width: 177px;height: 35px;border-radius: 5px;
+                        border: 1px solid black;text-align: center;" [(ngModel)]="nestedBatch.endDate"
+                            placeholder="Student" />
+
+                    </div>
+
+                    <div *ngFor="let childNestedBatch of nestedBatch.childNestedBatches; let k = index"
+                        class="child-nested-batch">
+
+                        <div style="display: flex;justify-content: space-around;">
+                            <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Action</span>
+                            <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Code</span>
+                            <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Course Name</span>
+                            <span style="font-family: sans-serif;font-weight: 600;font-size:medium ;">Teacher</span>
+
+                        </div>
+
+                        <div style="position: relative;margin-left: 80px;">
+                            <mat-icon class="mat-icon-main" svgIcon="Edit-up" (click)="editChildNestedBatch(i, j, k)"
+                                aria-hidden="false" aria-label="Toggle Password Visibility"
+                                style="margin-right: 20px;"></mat-icon>
+                            <mat-icon class="mat-icon-main" svgIcon="Del-up" (click)="deleteChildNestedBatch(i, j, k)"
+                                aria-hidden="false" aria-label="Toggle Password Visibility"
+                                style="margin-right: 20px;"></mat-icon>
+
+
+
+                            <input type="text" style="position: relative;left: 90px;width: 177px;height: 35px;border-radius: 5px;
+                            border: 1px solid black;text-align: center;"
+                                [(ngModel)]="childNestedBatch.field1" placeholder="Code" />
+                            <input type="text" style="position: relative;left: 151px;width: 177px;height: 35px;border-radius: 5px;
+                            border: 1px solid black;text-align: center;"
+                                [(ngModel)]="childNestedBatch.field2" placeholder="Course Name" />
+                            <input type="text" style="position: relative;left: 215px;width: 177px;height: 35px;border-radius: 5px;
+                            border: 1px solid black;text-align: center;"
+                                [(ngModel)]="childNestedBatch.field3" placeholder="Teacher" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+.main-con {
+    background-color: aliceblue;
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 50px;
+    left: 78px;
+    border-radius: 10px;
+}
+
+.batch-container {
+    margin-top: 20px;
+}
+
+.batch-entry {
+    margin-top: 37px;
+    margin-left: 75px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    
+    width:90% ;
+}
+
+.batch-entry input,
+.batch-entry button {
+    margin: 5px;
+}
+
+.nested-batch {
+    width: 95%;
+    margin-left: 60px;
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}
+
+.child-nested-batch {
+    width: 85%;
+    margin-left: 140px;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+.mat-icon-main{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
